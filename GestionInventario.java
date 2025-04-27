@@ -10,7 +10,7 @@ import java.io.FileReader;
 
 /**
  *
- * @author pc
+ * @author Andres
  */
 public class GestionInventario {
 
