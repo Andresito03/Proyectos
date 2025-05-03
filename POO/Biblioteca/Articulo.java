@@ -1,8 +1,7 @@
 package ActLibreria;
 
-
 abstract public class Articulo {
-    
+
     protected String titulo;
     protected String isbn;
     protected String autor;
@@ -13,26 +12,25 @@ abstract public class Articulo {
     public String getIsbn() {
         return isbn;
     }
-    
 
     public Articulo() {
     }
-    
+
     abstract public void mostrartodo();
-    
-    public void vender(){
+
+    public void vender() {
         this.ejemplares = this.ejemplares - 1;
-        System.out.println("Vendido por "+ this.precio);
+        System.out.println("Vendido por " + this.precio);
     }
 
-    public void generarficha(){
-          
+    public void generarficha() {
         System.out.println("Imprimiendo datos...");
-        System.out.println("  Titulo " + this.getTitulo());
-        System.out.println("  Autor " + this.getAutor());
-        System.out.println("  ISBN " + this.getIsbn());
+        System.out.println("  Título: " + this.getTitulo());
+        System.out.println("  Autor: " + this.getAutor());
+        System.out.println("  ISBN: " + this.getIsbn());
+        System.out.println("  Precio: " + this.getPrecio() + " €");
     }
-    
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -76,6 +74,5 @@ abstract public class Articulo {
     public float getPrecio() {
         return precio;
     }
-     
 
 }
