@@ -3,9 +3,9 @@ package ActLibreria;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.FileWriter;
 
 /**
- *
  * @author Andre
  */
 public class LibreriaEXE {
@@ -15,12 +15,21 @@ public class LibreriaEXE {
         Articulo[] biblioteca = new Articulo[100];
         Scanner in = new Scanner(System.in);
         Scanner inS = new Scanner(System.in);
-        cargarinfo(biblioteca);
-        menu(biblioteca, in, inS);
+        File archivo = cargarinfo(biblioteca);
+        if (archivo.exists()) {
 
+            menu(biblioteca, in, inS, archivo);
+
+        }
+
+        /*
+         * Este programa gestiona un conjunto de artículos a partir de un archivo existente.
+         * Permite consultar, crear, eliminar y modificar artículos, y guarda la información
+         * actualizada nuevamente en el archivo original.
+         */
     }
 
-    public static void menu(Articulo[] biblioteca, Scanner in, Scanner inS) {
+    public static void menu(Articulo[] biblioteca, Scanner in, Scanner inS, File archivo) {
         String modificacion = "";
         int opcion = 0;
         while (opcion != 9) {
@@ -31,6 +40,7 @@ public class LibreriaEXE {
             System.out.println("5. Vender un ejemplar");
             System.out.println("6. Modificar el precio de un articulo mediante el ISBN");
             System.out.println("7. Modificar todos los precios de un tipo de articulo");
+            System.out.println("8. Guardar informacion en el archivo");
             System.out.println("9. salir");
             opcion = in.nextInt();
             switch (opcion) {
@@ -63,6 +73,9 @@ public class LibreriaEXE {
                     System.out.println("   -5 -> Disminuye un 5 % el precio");
                     modificacion = inS.nextLine();
                     AumentarPrecioTipo(biblioteca, modificacion);
+                    break;
+                case 8:
+                    guardarInfo(biblioteca, archivo);
                     break;
                 case 9:
                     break;
@@ -187,7 +200,7 @@ public class LibreriaEXE {
         }
     }
 
-    public static void cargarinfo(Articulo[] biblioteca) {
+    public static File cargarinfo(Articulo[] biblioteca) {
 
         System.out.println("Introducir direccion del archivo");
         Scanner in = new Scanner(System.in);
@@ -250,6 +263,7 @@ public class LibreriaEXE {
         } catch (IOException e) {
             System.out.println("Error " + e);
         }
+        return archivo;
     }
 
     public static int buscar(Articulo[] biblioteca, Scanner inS) {
@@ -356,6 +370,7 @@ public class LibreriaEXE {
     }
 
     public static void AumentarPrecioTipo(Articulo[] biblioteca, String modificacion) {
+
         Scanner inS = new Scanner(System.in);
         String operacion = modificacion.substring(0, 1);
         float porcentaje = Float.parseFloat(modificacion.substring(1));
@@ -395,4 +410,54 @@ public class LibreriaEXE {
         }
 
     }
+
+    public static void guardarInfo(Articulo[] biblioteca, File archivo) {
+        try {
+            FileWriter writer = new FileWriter(archivo, false); // Sobrescribe el archivo
+
+            for (Articulo articulo : biblioteca) {
+                if (articulo != null) {
+                    StringBuilder linea = new StringBuilder();
+
+                   
+                    if (articulo instanceof Narrativa) {
+                        linea.append("Narrativa;");
+                    } else if (articulo instanceof Teatro) {
+                        linea.append("Teatro;");
+                    } else if (articulo instanceof Ensayo) {
+                        linea.append("Ensayo;");
+                    } else if (articulo instanceof Divulgacion) {
+                        linea.append("Divulgacion;");
+                    }
+
+                    
+                    linea.append(articulo.getTitulo()).append(";");
+                    linea.append(articulo.getIsbn()).append(";");
+                    linea.append(articulo.getAutor()).append(";");
+                    linea.append(articulo.getEditorial()).append(";");
+                    linea.append(articulo.getEjemplares()).append(";");
+                    linea.append(articulo.getPrecio()).append(";");
+
+                   
+                    if (articulo instanceof Narrativa) {
+                        linea.append(((Narrativa) articulo).getGenero());
+                    } else if (articulo instanceof Teatro) {
+                        linea.append(((Teatro) articulo).getArgumento());
+                    } else if (articulo instanceof Ensayo) {
+                        linea.append(((Ensayo) articulo).getNumeroensayosautor());
+                    } else if (articulo instanceof Divulgacion) {
+                        linea.append(((Divulgacion) articulo).getAmbito());
+                    }
+
+                    writer.write(linea.toString() + "\n");
+                }
+            }
+
+            writer.close();
+            System.out.println("Información guardada correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+
 }
