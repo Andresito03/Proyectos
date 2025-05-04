@@ -21,13 +21,13 @@ footer {
 }
 
 
-.w { background-image: url('../images/crash.png'); }
-.a { background-image: url('../images/kick.png'); }
-.s { background-image: url('../images/snare.png'); }
-.d { background-image: url('../images/tom1.png'); }
-.j { background-image: url('../images/tom2.png'); }
-.k { background-image: url('../images/tom3.png'); }
-.l { background-image: url('../images/tom4.png'); }
+.w { background-image: url('../imagenes/crash.png'); }
+.a { background-image: url('../imagenes/kick.png'); }
+.s { background-image: url('../imagenes/snare.png'); }
+.d { background-image: url('../imagenes/tom1.png'); }
+.j { background-image: url('../imagenes/tom2.png'); }
+.k { background-image: url('../imagenes/tom3.png'); }
+.l { background-image: url('../imagenes/tom4.png'); }
 
 
 .set {
