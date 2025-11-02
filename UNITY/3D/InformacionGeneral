@@ -1,0 +1,4 @@
+Este proyecto es un juego corto de disparos (shooter) desarrollado en Unity 3D, centrado en la acción rápida y el uso de habilidades especiales.
+Incluye enemigos, objetos recolectables, efectos visuales y sonoros, además de un sistema básico de progresión a través de una corta historia.
+
+El objetivo principal del proyecto es demostrar el uso de mecánicas jugables dinámicas, gestión de escenas, control de audio, partículas, y lógica de combate mediante programación en C#.
