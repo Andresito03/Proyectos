@@ -1,3 +1,35 @@
 BUILDS PARA WINDOWS Y LINUX
 
 https://drive.google.com/drive/folders/1dUC9zM_OzHNRLUB00rpO46Vg5I__Z7Vh?usp=sharing
+
+Instrucciones para descargar y ejecutar
+
+WINDOWS
+
+1. Descarga el archivo JUEGOWINDOWS.zip desde el enlace de Google Drive.
+
+2. Extrae el contenido en una carpeta (clic derecho → Extraer aquí).
+
+3. Abre la carpeta y haz doble clic en el archivo proyectoUNITY.exe.
+
+    Si aparezca la ventana de advertencia, haz clic en “Más información”.
+
+    Luego selecciona “Ejecutar de todas formas”.
+
+4. El juego se ejecutará.
+
+LINUX
+
+1. Descargar el archivo JUEGOLINUX.zip desde el enlace de Google Drive
+
+2. Extraer el contenido de la carpeta
+
+3. Abrir una terminar en la carpeta donde se descomprimirlo
+
+4. Si no puedes ejecutarlo con doble clic, abre una terminal donde descomprimiste el archivo y otorga permisos de ejecución al archivo Juego.x86_64 con el siguiente comando:
+
+    chmod +x Juego.x86_64
+
+5. Ejecuta Juego.x86_64
+
+5. El juego se ejecutará.
